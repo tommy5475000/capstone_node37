@@ -44,7 +44,7 @@ export const getUserSavedPicture = async (req, res) => {
   try {
     let data = await model.luu_anh1.findAll({
       where: {
-        hinh_id: 1,
+        nguoi_dung_id,
       },
       include: [
         {
@@ -60,6 +60,32 @@ export const getUserSavedPicture = async (req, res) => {
 
     // newComment sẽ giữ thông tin của bình luận mới được tạo
     responseData(res, "Lấy các ảnh ảnh đã được lưu ", data, 200);
+  } catch (error) {
+    console.error(error);
+    responseData(res, "Lỗi backend...", "", 500);
+  }
+};
+
+export const getPictureCreatedByUser = async (req, res) => {
+  let { token } = req.headers;
+
+  let dToken = decodeToken(token);
+  let { nguoi_dung_id } = dToken.data;
+
+  try {
+    let data = await model.hinh_anh.findAll({
+      where: {
+        nguoi_dung_id,
+      },
+    });
+
+    if (data.length > 0) {
+      // newComment sẽ giữ thông tin của bình luận mới được tạo
+      responseData(res, "Lấy các ảnh ảnh đã được tạo ", data, 200);
+    } else {
+      // newComment sẽ giữ thông tin của bình luận mới được tạo
+      responseData(res, "User không tạo ảnh nào cả ", "", 200);
+    }
   } catch (error) {
     console.error(error);
     responseData(res, "Lỗi backend...", "", 500);

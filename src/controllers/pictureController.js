@@ -133,3 +133,39 @@ export const commentPicture = async (req, res) => {
     responseData(res, "Lỗi backend...", "", 500);
   }
 };
+
+export const deletePicture = async (req, res) => {
+  let { token } = req.headers;
+  let { hinh_id } = req.body;
+
+  let dToken = decodeToken(token);
+  let { nguoi_dung_id } = dToken.data;
+
+  try {
+    // Kiểm tra xem ảnh có tồn tại và thuộc về người dùng không
+    let check = await model.hinh_anh.findOne({
+      where: {
+        hinh_id,
+        nguoi_dung_id,
+      },
+    });
+
+    if (check) {
+      // Nếu ảnh tồn tại và thuộc về người dùng, thì xóa nó
+      await model.hinh_anh.destroy({
+        where: {
+          hinh_id,
+          nguoi_dung_id,
+        },
+      });
+
+      responseData(res, "Xóa ảnh thành công", "", 200);
+    } else {
+      // Nếu không tìm thấy ảnh hoặc không thuộc về người dùng
+      responseData(res, "Ảnh không tồn tại hoặc không thuộc về bạn", "", 404);
+    }
+  } catch (error) {
+    console.error(error);
+    responseData(res, "Lỗi backend...", "", 500);
+  }
+};
