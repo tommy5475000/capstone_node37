@@ -5,6 +5,7 @@ import { createToken, decodeToken } from "../config/jwt.js";
 import bcrypt from "bcrypt";
 
 let model = initModels(sequelize);
+
 export const getUser = async (req, res) => {
   try {
     let data = await model.nguoi_dung.findAll();
@@ -86,6 +87,29 @@ export const getPictureCreatedByUser = async (req, res) => {
       // newComment sẽ giữ thông tin của bình luận mới được tạo
       responseData(res, "User không tạo ảnh nào cả ", "", 200);
     }
+  } catch (error) {
+    console.error(error);
+    responseData(res, "Lỗi backend...", "", 500);
+  }
+};
+
+export const addPicture = async (req, res) => {
+  let { token } = req.headers;
+  let dToken = decodeToken(token);
+  let { nguoi_dung_id } = dToken.data;
+  let { file } = req;
+  let { ten_hinh, mo_ta } = req.body;
+
+  try {
+    // Thêm một ảnh mới vào cơ sở dữ liệu
+    let newPicture = await model.hinh_anh.create({
+      nguoi_dung_id,
+      ten_hinh,
+      mo_ta,
+      duong_dan: file.filename, // Lưu đường dẫn của file vào cột 'duong_dan'
+    });
+
+    responseData(res, "Thêm ảnh thành công", newPicture, 201);
   } catch (error) {
     console.error(error);
     responseData(res, "Lỗi backend...", "", 500);
