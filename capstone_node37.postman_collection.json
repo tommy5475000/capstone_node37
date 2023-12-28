@@ -1,0 +1,282 @@
+{
+  "info": {
+    "_postman_id": "ce3816c7-ae5c-43a9-9391-d63b1acea65b",
+    "name": "capstone_node37",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "30671394"
+  },
+  "item": [
+    {
+      "name": "ĐĂNG KÝ",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7InVzZXJfaWQiOjl9LCJpYXQiOjE3MDA2NTY1NzZ9.e0eJmWa-YQFaxtLJEJbTx6UQ6I95NgGTzOaS90FmFEw",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"gray@gmail.com\",\n    \"mat_khau\":\"1234\",\n    \"ho_ten\":\"phong tran\",\n    \"tuoi\":\"21\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/sign-up",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["auth", "sign-up"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "ĐĂNG NHẬP",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"email\":\"gray@gmail.com\",\n    \"mat_khau\":\"1234\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY HẾT HÌNH ẢNH",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/picture/get-all",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "get-all"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY HÌNH ẢNH THEO TÊN",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/picture/get-by-name/hinh_meo",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "get-by-name", "hinh_meo"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY CHI TIẾT ẢNH VÀ NGƯỜI ĐĂNG",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/picture/get-detail/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "get-detail", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY DANH SÁCH COMMENT THEO ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://localhost:8080/picture/get-comment/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "get-comment", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY TÌNH TRẠNG LƯU",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/picture/get-save/2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "get-save", "2"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "BÌNH LUẬN ẢNH",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"hinh_id\":\"1\",\n     \"noi_dung\":\"hình hài quá\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/picture/comment",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "comment"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY THÔNG TIN NGƯỜI DÙNG",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/user/get-info",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["user", "get-info"],
+          "query": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY DANH SÁCH ẢNH ĐÃ LƯU THEO USERID",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/user/get-savedpicture",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["user", "get-savedpicture"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "LẤY DANH SÁCH ẢNH USER ĐÃ TẠO",
+      "request": {
+        "method": "GET",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "url": {
+          "raw": "http://localhost:8080/user/get-createdpicture",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["user", "get-createdpicture"],
+          "query": [
+            {
+              "key": "token",
+              "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+              "disabled": true
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "XÓA ẢNH",
+      "request": {
+        "method": "DELETE",
+        "header": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjp7Im5ndW9pX2R1bmdfaWQiOjR9LCJpYXQiOjE3MDM3MzM3NTd9.8pKNHdb2lE0NfEpGvhEQueBLY_1Qz51oK0EWm2AsZmY",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"hinh_id\":\"3\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/picture/delete",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["picture", "delete"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
