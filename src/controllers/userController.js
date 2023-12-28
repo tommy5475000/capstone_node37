@@ -46,7 +46,16 @@ export const getUserSavedPicture = async (req, res) => {
       where: {
         hinh_id: 1,
       },
-      include: ["nguoi_dung"],
+      include: [
+        {
+          model: model.hinh_anh,
+          as: "hinh",
+        },
+        {
+          model: model.nguoi_dung,
+          as: "nguoi_dung",
+        },
+      ],
     });
 
     // newComment sẽ giữ thông tin của bình luận mới được tạo
