@@ -1,6 +1,8 @@
+import { createToken } from "../config/jwt.js";
 import { responseData } from "../config/response.js";
 import sequelize from "../models/connect.js";
 import initModels from "../models/init-models.js";
+import bcrypt from "bcrypt";
 
 let model = initModels(sequelize);
 
@@ -17,8 +19,10 @@ export const login = async (req, res) => {
 
     // nếu đã tồn tại
     if (existUser) {
-      if (existUser.mat_khau == mat_khau) {
-        responseData(res, "Đăng Nhập Thành Công", "send token", 200);
+      if (bcrypt.compareSync(mat_khau, existUser.mat_khau)) {
+        let token = createToken({nguoi_dung_id:existUser.nguoi_dung_id});
+
+        responseData(res, "Đăng Nhập Thành Công", token, 200);
       } else {
         responseData(res, "Mật Khẩu Không Đúng", "", 400);
       }
@@ -50,7 +54,7 @@ export const signUp = async (req, res) => {
 
     let newUser = {
       email,
-      mat_khau,
+      mat_khau: bcrypt.hashSync(mat_khau, 10),
       ho_ten,
       tuoi,
       anh_dai_dien: "",
